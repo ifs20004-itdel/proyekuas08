@@ -17,7 +17,11 @@ use App\Http\Controllers\LoginController;
 Route::get('/', function () {
     return view('dashboard');
 });
-Route::get('/login/auth',[LoginController::class,'render']);
+
+Route::post('/',[LoginController::class,'store'])->name('login');
+
+Route::get('/login/auth',[LoginController::class,'create']);
+
 
 Route::get('/about',function(){
     return view('about');

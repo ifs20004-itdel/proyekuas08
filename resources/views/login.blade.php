@@ -12,20 +12,26 @@
 <body>
     <div class="bg-image d-flex align-items-center" style="background-image: url('{{asset('assets/LoginBg.jpeg')}}'); background-repeat: no-repeat; background-size: 1550px; height: 100vh; filter: blur(3px);">
     </div>
-    <div class="w-25 m-auto position-absolute top-50 start-50 translate-middle">
+    <div class=" m-auto position-absolute top-50 start-50 translate-middle min-w-700 max-w-full ">
         <div class="position-absolute top-0 start-50 translate-middle pb-3">
-            <img src = {{asset('Assets/logo.png')}} width= 115px>
+            <img src = {{asset('Assets/logo.png')}} width= 115px height="115px">
         </div>
         <div class="rounded-3 bg-light mx-auto p-5 bg-opacity-50 shadow">
-            <form action="/" method="POST">
+            <form action="{{route('login')}}" method="POST">
             @csrf
                 <div class="form-group pb-4">
                     <label class="h6" for="username">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" autocomplete="off">
+                    <input type="text" class="form-control @error('username') tidak valid @enderror" id="username" name="username" placeholder="Enter your username" autocomplete="off">
+                    @error('username')
+                        <div class="text-danger pl-2">{{ $message }}</div>
+                    @enderror
                 </div>
-                <div class="form-group pb-1">
+                <div class="form-group pb-4">
                     <label class="h6" for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name = "password" placeholder="Enter your password">
+                    <input type="password" class="form-control @error('password') tidak valid @enderror" id="password" name = "password" placeholder="Enter your password">
+                    @error('password')
+                        <div class="text-danger pl-2">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="form-check pb-4">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">

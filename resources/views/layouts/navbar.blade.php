@@ -1,18 +1,34 @@
-
-  @vite('resources/css/app.css')
-  <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+@vite('resources/css/app.css')
+<script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 <nav class="bg-slate-800 bg-opacity-50 px-10 py-1 absolute z-20" style="width:100%" >
     <div class="container flex flex-wrap items-center justify-between mx-auto">
       <a href="/" class="flex items-center">
-          <img src="{{asset('assets/logo.png')}}" width="90" height="100" alt="Beasiswa Logo" />
+          <img src="{{asset('assets/logo.png')}}" width="90" height="200" alt="Beasiswa Logo" />
           <span class="self-center pl-5 font-semibold whitespace-nowrap text-white">BEASISWA <br> INSTITUT TEKNOLOGI DEL</span>
       </a>
-      <div class="flex items-center md:order-2 pr-5">
-        
-          <button type="button" class="flex mr-3 text-sm rounded-full md:mr-0 " id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-            <x-codicon-account color="white" width="32" />    
+      <div class="flex items-center md:order-2 pr-3">
+          <button type="button" class="flex mr-3 text-sm rounded-full md:mr-0 " id="user-menu-button" aria-expanded="false" data-dropdown-toggle="notification" data-dropdown-placement="bottom">
+            <x-monoicon-notification class="pr-4" color="white" width="35" />
           </button>
-          <!-- Dropdown menu -->
+          <button type="button" class="flex mr-3 text-sm rounded-full md:mr-0 " id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+            <x-codicon-account color="white" width="30" />    
+          </button>
+          <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow" id="notification">
+            <div class="px-4 py-3">
+              <span class="block text-sm text-gray-900 ">Notification</span>
+            </div>
+            <ul class="py-1" aria-labelledby="user-menu-button">
+              <li>
+                <a href="/" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Dashboard</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Settings</a>
+              </li>
+              <li>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Sign out</a>
+              </li>
+            </ul>
+          </div>
           <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow" id="user-dropdown">
             <div class="px-4 py-3">
               <span class="block text-sm text-gray-900 ">Bonnie Green</span>
@@ -30,7 +46,7 @@
               </li>
             </ul>
           </div>
-        <p class="pl-4 text-white">Samuel I. H. Sibuea</p>
+          <p class="pl-4 text-white">Samuel I. H. Sibuea</p>
       </div>
       <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
         <ul class="flex flex-col  mt-4 border md:flex-row md:space-x-12 md:mt-0 md:text-sm md:font-medium md:border-0 ">

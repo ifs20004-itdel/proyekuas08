@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,4 +10,5 @@
 <body>
     @include('layouts.navbar')
 </body>
-</html>
+</html> --}}
+@extends('layouts.app')

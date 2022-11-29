@@ -54,39 +54,27 @@
             <a href="/" class="block py-2 pl-3 pr-4 text-yellow-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-400 md:p-0 " aria-current="page">Beranda</a>
           </li>
           <li>
-            <button id="dropdownDefault" data-dropdown-toggle="dropdown" class="z-20 py-2 pl-3 pr-4 text-yellow-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-400 md:p-0 inline-flex items-center" type="button">Data Beasiswa <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-            <div id="dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow">
-                <ul class="py-1 text-sm text-gray-700 " aria-labelledby="dropdownDefault">
-                  <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 ">Dashboard</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 ">Settings</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 ">Earnings</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 ">Sign out</a>
-                  </li>
-                </ul>
+            <button id="dropdownDataBeasiswa" data-dropdown-toggle="dropdownD" class="z-20 py-2 pl-3 pr-4 text-yellow-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-400 md:p-0 inline-flex items-center" type="button">Data Beasiswa <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+            <div id="dropdownD" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow">
+              <ul class="py-1 text-sm text-gray-700 " aria-labelledby="dropdownDataBeasiswa">
+                <li>
+                  <a href="#" class="block py-2 px-4 hover:bg-gray-100 ">Beasiswa X</a>
+                </li>
+                <li>
+                  <a href="#" class="block py-2 px-4 hover:bg-gray-100 ">Beasiswa Eksternal</a>
+                </li>
+              </ul>
             </div>
           </li>
           <li>
-            <button id="dropdownDefault" data-dropdown-toggle="dropdown" class="z-20 py-2 pl-3 pr-4 text-yellow-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-400 md:p-0 inline-flex items-center" type="button">Jenis Beasiswa <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
-            <div id="dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow">
-                <ul class="py-1 text-sm text-gray-700 " aria-labelledby="dropdownDefault">
+            <button id="dropdownJenisBeasiswa" data-dropdown-toggle="dropdownJ" class="z-20 py-2 pl-3 pr-4 text-yellow-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-400 md:p-0 inline-flex items-center" type="button">Jenis Beasiswa <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+            <div id="dropdownJ" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow">
+                <ul class="py-1 text-sm text-gray-700 " aria-labelledby="dropdownJenisBeasiswa">
                   <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 ">Dashboard</a>
+                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 ">Beasiswa Internal</a>
                   </li>
                   <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 ">Settings</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 ">Earnings</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 ">Sign out</a>
+                    <a href="#" class="block py-2 px-4 hover:bg-gray-100 ">Beasiswa Eksternal</a>
                   </li>
                 </ul>
             </div>

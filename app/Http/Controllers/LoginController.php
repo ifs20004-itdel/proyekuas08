@@ -22,7 +22,7 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
         // $request = Http::asForm()->post('https://cis-dev.del.ac.id/api/jwt-api/do-auth',[
-        //     'email' => request('email'),
+        //     'username' => request('username'),
         //     'password' => request('password')
         // ]);
         return redirect()->route('login');

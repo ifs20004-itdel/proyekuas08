@@ -1,7 +1,7 @@
 
   @vite('resources/css/app.css')
   <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
-<div class="grid grid-cols-3 gap-4 bg-slate-900 text-white p-10 w-full absolute bottom-auto">
+<div class="grid grid-cols-3 gap-4 bg-slate-900 text-white p-10 w-full">
         <div>
             <h1 class="pb-5 text-lg font-bold tracking-wider">PETA LOKASI</h1>
             <div class="pb-5">
@@ -33,6 +33,20 @@
                 <p>http://baak.fti.del.ac.id/</p>
             </div>
         </div>
-        <div>   
+        <div class="grid grid-cols-3 p-5">
+            <div class="row-span-1 ... pr-3">
+                <img class="pb-1" src="{{url(asset('assets/kip.jpg'))}}" alt="kip_kuliah">
+                <img class="pb-1" src="{{url(asset('assets/Tanoto.png'))}}" alt="tanoto">
+                <img src="{{url(asset('assets/niaga.jpg'))}}" alt="cimb_niaga"> 
+            </div>
+            <div>
+                <img class="pb-1" src="{{url(asset('assets/Sea.png'))}}" alt="sea">
+                <img class="pb-1" src="{{url(asset('assets/bni.jpg'))}}" alt="bni">
+                <img class="pb-1" src="{{url(asset('assets/mbkm.jpg'))}}" alt="kampusMerdeka">
+            </div>
+            <div >
+                <img class="pb-1" src="{{url(asset('assets/Rajawali.png'))}}" alt="rajawali">
+                <img class="pb-1" src="{{url(asset('assets/inalum.jpg'))}}" alt="inalum">
+            </div>
         </div>
 </div>  

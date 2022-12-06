@@ -6,7 +6,11 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {}
+    extend: {
+      backgroundImage:{
+        'beasiswa-theme': "bg-red-500",
+      }
+    }
   },
   plugins: [],
 }

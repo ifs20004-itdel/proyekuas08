@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('beasiswaeksternal', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('judul');
-            $table->string('author');
             $table->text('konten');
             $table->string('gambar');
-            $table->date('tanggalCreate');
+            $table->date('tanggalDaftar')->nullable(false);
+            $table->date('taggalDeadline')->nullable(false);
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news');
+        Schema::dropIfExists('beasiswaeksternal');
     }
 };

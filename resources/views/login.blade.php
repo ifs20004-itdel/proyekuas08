@@ -37,7 +37,10 @@
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">Remember me?</label>
                 </div>
-                <button type="submit" class="btn btn-primary col-md-12 text-center">Login</button>
+                <button type="submit" id="login" name="login" class="btn btn-primary col-md-12 text-center">Login</button>
+                @error('login')
+                    <div class="text-danger pl-2">{{ $message }}</div>
+                @enderror
             </form>
         </div>
     </div>

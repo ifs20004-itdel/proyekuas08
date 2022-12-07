@@ -49,8 +49,11 @@ Route::get('/seleksi',function(){
 // Data Beasiswa
 Route::get('dataBeasiswa/{tahun}',[DataBeasiswaController::class,'index'])->name('dataBeasiswa');
 
-Route::get('create-data-beasiswa',function(){
-    return view('databeasiswa.createData');
-})->name('create-data-beasiswa');
-Route::post('create-data-beasiswa',
+Route::post('create-data-beasiswa/{tahun}',
 [DataBeasiswaController::class,'store'])->name('store-data-beasiswa');
+
+Route::get('create-data-beasiswa/{tahun}',[
+    DataBeasiswaController::class,'create'])->name('create-data-beasiswa');
+
+Route::get('hapus-data-beasiswa/{id}/{tahun}',
+ [DataBeasiswaController::class,'destroy'])->name('hapus-data-beasiswa');

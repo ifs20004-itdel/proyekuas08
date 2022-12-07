@@ -13,18 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('data_beasiswa', function (Blueprint $table) {
+        Schema::create('prodi', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('nama');
-            $table->string('nim');
+            $table->string('nama_prodi');
             $table->integer('id_prodi');
-            $table->integer('angkatan');
-            $table->string('beasiswa');
-            $table->date('tahunStart');
-            $table->date('tahunEnd');
-            $table->string('status');
-            $table->integer('tahunTerima');
+            $table->foreign('id_prodi')->references('id_prodi')->on('data_beasiswa');
+            $table->timestamps();
         });
     }
 
@@ -35,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('data_beasiswa');
+        Schema::dropIfExists('prodi');
     }
 };

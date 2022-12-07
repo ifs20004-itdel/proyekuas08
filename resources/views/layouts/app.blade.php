@@ -9,6 +9,7 @@
   @vite('resources/js/app.js')
 </head>
 <body>
+  @include('sweetalert::alert')
   @include('layouts.navbar')
   @yield('content')
   @include('layouts.footer')

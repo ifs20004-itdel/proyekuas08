@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\DataBeasiswa;
+use App\Models\Prodi;
+use Alert;
 
 class DataBeasiswaController extends Controller
 {
     public function index($tahun){
-        // $year = $request->get('tahun');
         $year = $tahun;
-        $dataBeasiswa = DataBeasiswa::where('tahunTerima','=', $year)->get();
+        $dataBeasiswa = DataBeasiswa::select('data_beasiswa.*','prodi.nama_prodi')
+        ->join('prodi','data_beasiswa.id_prodi','=','prodi.id_prodi' )
+        ->where('tahun','=', $year)->get();
         return view('databeasiswa.dataBeasiswa',
         [
             'year' => $year,
@@ -18,20 +22,45 @@ class DataBeasiswaController extends Controller
         ]);
     }
 
-    public function store(Request $request){
+    public function create($tahun){   
+        $programStudi = Prodi::all();
+        return view('databeasiswa.createData',
+         compact('programStudi'),
+         [
+             'tahun' => $tahun
+         ]
+        );
+    }
+
+    public function store(Request $request, $tahun){
+        $request->validate([
+            'nama' => 'required',
+            'nim' => 'required',
+            'angkatan' => 'required',
+            'beasiswa' => 'required',
+            'tahunTerima' => 'required',
+        ]);
+
         DataBeasiswa::create([
-            'nama' => $request->get('nama'),
-            'nim' => $request->get('nim'),
-            'prodi' => $request->get('prodi'),
-            'angkatan'=> $request->get('angkatan'),
-            'beasiswa'=> $request->get('beasiswa'),
-            'tahun'=> $request->get('tahun'),
-            'status'=> $request->get('status'),
-            'tahunTerima'=> $request->get('tahunTerima'),
+            'nama' => $request->nama,
+            'nim' => $request->nim,
+            'id_prodi' => $request->id_prodi,
+            'angkatan'=> $request->angkatan,
+            'beasiswa'=> $request->beasiswa,
+            'tahun'=> $tahun,
+            'status'=> $request->status,
+            'tahunTerima'=> $request->tahunTerima,
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        Alert::success('Sukses', 'Data Telah Disimpan.');
+        return redirect()->route('dataBeasiswa', $tahun);
+    }
 
-        return view('databeasiswa.createData');
+    public function destroy($id, $tahun){
+        $dataBeasiswa = DataBeasiswa::findorfail($id);
+        $dataBeasiswa->delete();
+        Alert::info('Sukses', 'Data Berhasil Dihapus.');
+        return redirect()->route('dataBeasiswa', $tahun);
     }
 }

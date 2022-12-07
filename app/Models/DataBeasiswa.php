@@ -11,6 +11,6 @@ class DataBeasiswa extends Model
     protected $table = 'data_beasiswa';
     protected $primarykey = 'id';
     protected $fillable = [
-        'id','nama', 'nim', 'prodi', 'angkatan', 'beasiswa', 'tahun', 'status', 'tahunTerima', 'created_at', 'updated_at'
+        'nama', 'nim','id_prodi', 'angkatan', 'beasiswa', 'tahun', 'status', 'tahunTerima', 'created_at', 'updated_at'
     ];
 }

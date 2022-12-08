@@ -48,11 +48,13 @@
           </div>
           <p class="pl-4 text-white">Samuel I. H. Sibuea</p>
       </div> --}}
-      @if (Auth::check())
+      @yield('')
+      @if (res=="true")
         @include('components.loggedIn')
       @else
         @include('components.logIn')
       @endif
+
       <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
         <ul class="flex flex-col  mt-4 border md:flex-row md:space-x-12 md:mt-0 md:text-sm md:font-medium md:border-0 ">
           <li>

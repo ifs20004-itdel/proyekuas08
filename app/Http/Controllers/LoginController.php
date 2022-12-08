@@ -8,10 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    // public function render(){
-    //     return view('login');
-    // }
-
     public function create(){
         return view('login');
     }
@@ -29,12 +25,18 @@ class LoginController extends Controller
         ]);
 
         $json = json_decode($user->body(), true);
+        $res = $json['result'];
         if($json['result'] == true){
             // $request->session()->put('user', $json['data']);
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard', $res);
         }else{
             return redirect()->route('login')->with('error', 'Username atau Password salah');
         }
+        // if(Auth::attempt($request->only('username', 'password'))){
+        //     return redirect()->route('dashboard');
+        // }else{
+        //     return redirect()->route('login')->with('error', 'Username atau Password salah');
+        // }
 
     }
 

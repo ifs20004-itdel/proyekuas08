@@ -10,6 +10,7 @@
 </head>
 <body>
   @include('sweetalert::alert')
+  {{-- @yield('navbar') --}}
   @include('layouts.navbar')
   @yield('content')
   @include('layouts.footer')

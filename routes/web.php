@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DataBeasiswaController;
+use App\Http\Controllers\EksternalBeasiswaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,14 +38,16 @@ Route::get('/daftarBeasiswa',function(){
 Route::get('/beasiswaInternal',function(){
     return view('jenisbeasiswa.internal');
 });
-Route::get('/beasiswaEksternal',function(){
-    return view('jenisbeasiswa.eksternal');
-});
+
+Route::get('/beasiswaEksternal',
+    [EksternalBeasiswaController::class,'index'])->name('beasiswaEksternal');
+
 
 // Seleksi Beasiswa
 Route::get('/seleksi',function(){
     return view('seleksibeasiswa.seleksi');
 });
+
 
 // Data Beasiswa
 Route::get('dataBeasiswa/{tahun}',[DataBeasiswaController::class,'index'])->name('dataBeasiswa');

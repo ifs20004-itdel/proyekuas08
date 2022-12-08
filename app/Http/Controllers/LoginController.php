@@ -29,6 +29,7 @@ class LoginController extends Controller
         if($json['result'] == true){
             // $request->session()->put('user', $json['data']);
             return redirect()->route('dashboard', $res);
+            // return \dd($res);
         }else{
             return redirect()->route('login')->with('error', 'Username atau Password salah');
         }

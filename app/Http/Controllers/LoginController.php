@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use App\Models\User;
 
 class LoginController extends Controller
 {
@@ -25,20 +29,39 @@ class LoginController extends Controller
         ]);
 
         $json = json_decode($user->body(), true);
-        $res = $json['result'];
+        // $res = $json['result'];
         if($json['result'] == true){
+
+            $token = $json['token'];
+
             // $request->session()->put('user', $json['data']);
-            return redirect()->route('dashboard', $res);
+            $id_user = $json['user']['user_id'];
+            $username = $json['user']['username'];
+            $email = $json['user']['email'];
+            $role = $json['user']['role'];
+            $remember_token = $json['token'];
+
+            // Cek apakah data user terdapat di database
+            $exist = User::where('user_id', $id_user)->exists();
+            $users = new User;
+            $users->user_id = $id_user;
+            $users->username = $username;
+            $users->email = $email;
+            $users->role = $role;
+            $users->remember_token = $remember_token;
+
+            if(!$exist){
+                $users->save();
+            }
+
+            $dt = User::where('user_id', $id_user)->first();
+            Auth::login($dt);
+            // return redirect()->route('dashboard');
+            return redirect()->route('dashboard');
             // return \dd($res);
         }else{
-            return redirect()->route('login')->with('error', 'Username atau Password salah');
+            return redirect()->route('login')->withErrors(['login' => 'Username atau Password Salah']);
         }
-        // if(Auth::attempt($request->only('username', 'password'))){
-        //     return redirect()->route('dashboard');
-        // }else{
-        //     return redirect()->route('login')->with('error', 'Username atau Password salah');
-        // }
-
     }
 
 }

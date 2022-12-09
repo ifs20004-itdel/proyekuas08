@@ -38,5 +38,5 @@
       </li>
     </ul>
   </div>
-  <p class="pl-4 text-white">Samuel I. H. Sibuea</p>
+  <p class="pl-4 text-white">{{username}}</p>
 </div>

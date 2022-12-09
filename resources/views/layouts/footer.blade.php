@@ -50,3 +50,6 @@
             </div>
         </div>
 </div>  
+<div class="bg-white w-full py-2">
+    <p class="text-black text-center font-bold">Copyright @Kelompok 8</p>
+</div>

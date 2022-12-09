@@ -50,13 +50,13 @@ class SponsorshipSeeder extends Seeder
             [
                 'title' => 'Bidikmisi/KIP',
                 'description' => "Program beasiswa Bidikmisi adalah program bantuan biaya pendidikan yang diberikan oleh Pemerintah melalui Direktorat Jenderal Pendidikan Tinggi (Ditjen Dikti) Kementerian Pendidikan dan Kebudayaan mulai tahun 2010 kepada mahasiswa yang memiliki potensi akademik memadai dan kurang mampu secara ekonomi.
-                Program Bidikmisi bertujuan: 1. meningkatkan motivasi belajar dan prestasi calon mahasiswa, khususnya mereka yang menghadapi kendala ekonomi;
-                2. meningkatkan akses dan kesempatan belajar di perguruan tinggi bagi rakyat Indonesia yang berpotensi akademik tinggi dan kurang mampu secara ekonomi; 
-                3. menjamin keberlangsungan studi mahasiswa sampai selesai; 
-                4. meningkatkan prestasi mahasiswa, baik pada bidang akademik/kurikuler, kokurikuler maupun ekstra kurikuler; 
-                5. menimbulkan dampak positif bagi mahasiswa dan calon mahasiswa lain untuk selalu meningkatkan prestasi; 
-                6. melahirkan lulusan yang mandiri, produktif, dan memiliki kepedulian sosial, sehingga mampu berperan dalam upaya pengentasan kemiskinan.
-                ",
+                Program Bidikmisi bertujuan:;
+                1. meningkatkan motivasi belajar dan prestasi calon mahasiswa, khususnya mereka yang menghadapi kendala ekonomi.;
+                2. meningkatkan akses dan kesempatan belajar di perguruan tinggi bagi rakyat Indonesia yang berpotensi akademik tinggi dan kurang mampu secara ekonomi.; 
+                3. menjamin keberlangsungan studi mahasiswa sampai selesai.; 
+                4. meningkatkan prestasi mahasiswa, baik pada bidang akademik/kurikuler, kokurikuler maupun ekstra kurikuler.; 
+                5. menimbulkan dampak positif bagi mahasiswa dan calon mahasiswa lain untuk selalu meningkatkan prestasi.; 
+                6. melahirkan lulusan yang mandiri, produktif, dan memiliki kepedulian sosial, sehingga mampu berperan dalam upaya pengentasan kemiskinan.",
                 'image' => '-'
             ]
     );

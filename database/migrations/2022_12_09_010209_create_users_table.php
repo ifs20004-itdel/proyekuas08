@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('beasiswaeksternal', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->string('username');
+            $table->string('email')->unique();
+            $table->string('role');
+            $table->text('remember_token');
             $table->timestamps();
-            $table->string('judul');
-            $table->text('konten');
-            $table->string('gambar');
-            $table->date('tanggalDaftar')->nullable(false);
-            $table->date('taggalDeadline')->nullable(false);
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('beasiswaeksternal');
+        Schema::dropIfExists('users');
     }
 };

@@ -21,10 +21,9 @@ return new class extends Migration
             $table->integer('id_prodi');
             $table->integer('angkatan');
             $table->string('beasiswa');
-            $table->date('tahunStart');
-            $table->date('tahunEnd');
             $table->string('status');
             $table->integer('tahunTerima');
+            $table->integer('tahun');
         });
     }
 

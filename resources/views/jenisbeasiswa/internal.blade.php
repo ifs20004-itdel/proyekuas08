@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Seleksi')
+@section('title','Beasiswa Internal')
 @section('background', 'bg-slate-700')
 @section('content')
 <div class="container w-3/4 m-auto px-10">

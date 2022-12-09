@@ -8,9 +8,7 @@
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         </head>
         <body>
-            @php
-                $id = 1;
-            @endphp
+
             <h1 class="text-center text-4xl font-bold py-10">Data Penerima Beasiswa Tahun {{$year}}</h1>
             @if($data->isEmpty())
                 <x-carbon-warning height="50px" color="red" class="w-1/4 m-auto mb-2" />
@@ -24,21 +22,24 @@
                 @csrf
                 <a href="{{route('create-data-beasiswa', $year)}}" type="submit" class="bg-green-600 rounded-md px-3 py-2 text-white font-bold hover:shadow-slate-400 hover:shadow-md hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-500 ">Tambah Data</a>
             </div>
-            <table class="border-collapse border border-slate-400 mx-auto my-10">
+            <table class="border-collapse border border-slate-400 mx-auto mt-10 mb-5">
                 <tr class="bg-green-400">
-                    <th class="px-7 border border-slate-400 p-1">No</th>
-                    <th class="px-28 border border-slate-400">Nama</th>
-                    <th class="px-10 border border-slate-400">NIM</th>
-                    <th class="px-10 border border-slate-400">Program Studi</th>
-                    <th class="px-5 border border-slate-400">Angkatan</th>
-                    <th class="px-10 border border-slate-400">Beasiswa</th>
-                    <th class="px-5 border border-slate-400">Tahun Penerimaan</th>
-                    <th class="px-10 border-slate-400">Status</th>
+                    <th class="px-4 border border-slate-400 p-1">No</th>
+                    <th class="px-28 border border-slate-400">@sortablelink('nama',"Nama")</th>
+                    <th class="px-10 border border-slate-400">@sortablelink('nim',"NIM")</th>
+                    <th class="px-12 border border-slate-400">@sortablelink('id_prodi',"Program Studi")</th>
+                    <th class="px-5 border border-slate-400">@sortablelink('angkatan',"Angkatan")</th>
+                    <th class="px-10 border border-slate-400">@sortablelink('beasiswa',"Beasiswa")</th>
+                    <th class="px-4 border border-slate-400">Tahun Penerimaan</th>
+                    <th class="px-10 border-slate-400">@sortablelink('status',"Status")</th>
                     <th class="px-10 border border-slate-400">Aksi</th>
                 </tr>
-                @foreach($data as $item)
+                @php
+                    $id = 1;
+                @endphp
+                @foreach($data as $row=>$item)
                     <tr class="border text-center ">
-                        <td class="border border-slate-400 p-2">{{$id}}</td>
+                        <td class="border border-slate-400 p-2">{{$row+$data->firstItem()}}</td>
                         <td class="border border-slate-400">{{$item->nama}}</td>
                         <td class="border border-slate-400">{{$item->nim}}</td>
                         <td class="border border-slate-400">{{$item->nama_prodi}}</td>
@@ -52,11 +53,15 @@
                             </form>
                         </td>
                     </tr>
-                    @php
-                        $id++;
-                    @endphp
+                @php
+                    $id++;
+                @endphp
                 @endforeach
             </table>
+            <div class="w-3/4 m-auto pb-5">
+                {{-- {{$data->links()}} --}}
+                {!! $data->appends(Request::except('page'))->render() !!}
+            </div>
         </body>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
         <script type="text/javascript">

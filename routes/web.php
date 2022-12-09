@@ -15,18 +15,30 @@ use App\Http\Controllers\EksternalBeasiswaController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+
+// Route::get('/{userlog}', function () {
+//     return view('dashboard');
+// })->name('dashboardLoggedIn');
+
 
 // Login
 Route::post('/login/auth',[LoginController::class,'store'])->name('login');
 
 Route::get('/login/auth',[LoginController::class,'create']);
 
+//Logout
 
-Route::get('/about',function(){
-    return view('about');
+
+Route::middleware(['auth'])->group(function () {
+    
+    Route::get('/', function () {
+        // return dd('Hello World');
+        return view('dashboard');
+    })->name('dashboard');
+    
+    
+    Route::get('/about',function(){
+        return view('about');
 });
 
 
@@ -60,3 +72,5 @@ Route::get('create-data-beasiswa/{tahun}',[
 
 Route::get('hapus-data-beasiswa/{id}/{tahun}',
  [DataBeasiswaController::class,'destroy'])->name('hapus-data-beasiswa');
+
+    });

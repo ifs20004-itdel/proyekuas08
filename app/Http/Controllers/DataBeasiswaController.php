@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Kyslik\ColumnSortable\Sortable;
 use App\Models\DataBeasiswa;
 use App\Models\Prodi;
 use Alert;
@@ -14,7 +16,7 @@ class DataBeasiswaController extends Controller
         $year = $tahun;
         $dataBeasiswa = DataBeasiswa::select('data_beasiswa.*','prodi.nama_prodi')
         ->join('prodi','data_beasiswa.id_prodi','=','prodi.id_prodi' )
-        ->where('tahun','=', $year)->get();
+        ->where('tahun','=', $year)->sortable()->paginate(15);
         return view('databeasiswa.dataBeasiswa',
         [
             'year' => $year,
@@ -60,7 +62,7 @@ class DataBeasiswaController extends Controller
     public function destroy($id, $tahun){
         $dataBeasiswa = DataBeasiswa::findorfail($id);
         $dataBeasiswa->delete();
-        Alert::info('Sukses', 'Data Berhasil Dihapus.');
+        Alert::success('Sukses', 'Data Berhasil Dihapus.');
         return redirect()->route('dataBeasiswa', $tahun);
     }
 }

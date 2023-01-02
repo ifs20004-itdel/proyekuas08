@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
+use App\Provider\RouteServiceProvider;
 
 class LoginController extends Controller
 {
+
     public function create(){
         return view('login');
     }
@@ -56,9 +58,7 @@ class LoginController extends Controller
 
             $dt = User::where('user_id', $id_user)->first();
             Auth::login($dt);
-            // return redirect()->route('dashboard');
             return redirect()->route('dashboard');
-            // return \dd($res);
         }else{
             return redirect()->route('login')->withErrors(['login' => 'Username atau Password Salah']);
         }

@@ -13,7 +13,6 @@
     <div class="absolute z-10 pl-5 flex mx-20 p-5 rounded-md" style="margin-top: 550px">
       <div class="w-full bg-gray-100 py-5 px-10 rounded-md">
         <h1 class="font-bold tracking-wider text-3xl">BERITA</h1>
-
         <!-- component -->
         @include('layouts.news')
       </div>

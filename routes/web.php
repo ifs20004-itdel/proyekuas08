@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DataBeasiswaController;
 use App\Http\Controllers\EksternalBeasiswaController;
 /*
@@ -22,23 +23,23 @@ use App\Http\Controllers\EksternalBeasiswaController;
 
 
 // Login
-Route::post('/login/auth',[LoginController::class,'store'])->name('login');
+Route::post('/login/auth',[LoginController::class,'store'])->name('login')->middleware('guest');
 
-Route::get('/login/auth',[LoginController::class,'create']);
-
-//Logout
+Route::get('/login/auth',[LoginController::class,'create'])->middleware('guest');
 
 
-Route::middleware(['auth'])->group(function () {
-    
-    Route::get('/', function () {
-        // return dd('Hello World');
-        return view('dashboard');
-    })->name('dashboard');
-    
-    
-    Route::get('/about',function(){
-        return view('about');
+Route::get('/', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+
+Route::get('/', function () {
+    return view('dashboard');
+})->name('dashboard');
+
+
+Route::get('/about',function(){
+    return view('about');
 });
 
 
@@ -50,7 +51,6 @@ Route::get('/daftarBeasiswa',function(){
 Route::get('/beasiswaInternal',function(){
     return view('jenisbeasiswa.internal');
 });
-
 Route::get('/beasiswaEksternal',
     [EksternalBeasiswaController::class,'index'])->name('beasiswaEksternal');
 
@@ -63,14 +63,19 @@ Route::get('/seleksi',function(){
 
 // Data Beasiswa
 Route::get('dataBeasiswa/{tahun}',[DataBeasiswaController::class,'index'])->name('dataBeasiswa');
-
 Route::post('create-data-beasiswa/{tahun}',
 [DataBeasiswaController::class,'store'])->name('store-data-beasiswa');
 
 Route::get('create-data-beasiswa/{tahun}',[
     DataBeasiswaController::class,'create'])->name('create-data-beasiswa');
-
 Route::get('hapus-data-beasiswa/{id}/{tahun}',
- [DataBeasiswaController::class,'destroy'])->name('hapus-data-beasiswa');
+[DataBeasiswaController::class,'destroy'])->name('hapus-data-beasiswa');
 
-    });
+
+// Log out
+Route::post('logout', LogoutController::class)->name('logout');
+
+
+    // Route::middleware('guest')->group(function(){
+
+    // });

@@ -59,7 +59,6 @@
                 @endforeach
             </table>
             <div class="w-3/4 m-auto pb-5">
-                {{-- {{$data->links()}} --}}
                 {!! $data->appends(Request::except('page'))->render() !!}
             </div>
         </body>

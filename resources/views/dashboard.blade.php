@@ -10,16 +10,18 @@
     <div class="absolute z-10 top-40 pl-12">
       <h1 class="text-6xl text-white drop-shadow-lg pt-5 -z-0"> <b>Create</b> Best Future, <b>Create</b> Your Own Dream</h1>
     </div>
+    {{-- <p>Halo</p> --}}
+    
     <div class="absolute z-10 pl-5 flex mx-20 p-5 rounded-md" style="margin-top: 550px">
       <div class="w-full bg-gray-100 py-5 px-10 rounded-md">
         <h1 class="font-bold tracking-wider text-3xl">BERITA</h1>
+        {{session()->get('username')}}
         <!-- component -->
-        @include('layouts.news')
+        @include('artikelBerita.postArtikel')
       </div>
       <div class="border w-3/4">
         <h1 class="font-bold tracking-wider text-3xl">PENGUMUMAN</h1>
       </div>
     </div>
 </div>
-
 @endsection

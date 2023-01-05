@@ -6,7 +6,7 @@
     <h1 class="text-center font-bold text-5xl pt-10 pb-16">Beasiswa Eksternal</h1>
     {{-- <div class="container w-3/4 m-auto px-10"> --}}
         @php
-            Auth::user()->id;
+            // Auth::user()->id;
             $id = 1;
             // split the description and store it in an array
             foreach($sponsorship as $item){

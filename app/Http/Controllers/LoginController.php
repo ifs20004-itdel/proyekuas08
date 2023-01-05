@@ -57,7 +57,10 @@ class LoginController extends Controller
             }
 
             $dt = User::where('user_id', $id_user)->first();
-            Auth::login($dt);
+            Auth::login($dt, $remember_token);
+            
+            $request->session()->put('username', $users->username);
+            $request->session()->regenerate();
             return redirect()->route('dashboard');
         }else{
             return redirect()->route('login')->withErrors(['login' => 'Username atau Password Salah']);

@@ -34,8 +34,8 @@
                     @enderror
                 </div>
                 <div class="form-check pb-4">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Remember me?</label>
+                    <input type="checkbox" class="form-check-input" id="rememberMe" name="rememberMe" value="false">
+                    <label class="form-check-label" for="rememberMe">Remember me?</label>
                 </div>
                 <button type="submit" id="login" name="login" class="btn btn-primary col-md-12 text-center">Login</button>
                 @error('login')

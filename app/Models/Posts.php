@@ -10,7 +10,7 @@ class Posts extends Model
     protected $table = 'posts';
     protected $primarykey = 'id';
     protected $fillable = [
-        'id_article','title','tags', 'description', 'created_at', 'updated_at'
+        'id_article','title','tags', 'caption','thumbnail','description', 'created_at', 'updated_at'
     ];
 
     // use HasFactory;

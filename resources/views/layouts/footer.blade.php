@@ -35,18 +35,36 @@
         </div>
         <div class="grid grid-cols-3 p-5">
             <div class="row-span-1 ... pr-3">
-                <img class="pb-1" src="{{url(asset('assets/kip.jpg'))}}" alt="kip_kuliah">
-                <img class="pb-1" src="{{url(asset('assets/Tanoto.png'))}}" alt="tanoto">
-                <img src="{{url(asset('assets/niaga.jpg'))}}" alt="cimb_niaga"> 
+                <a href="https://kip-kuliah.kemdikbud.go.id/">
+                    <img class="pb-1" src="{{url(asset('assets/kip.jpg'))}}" alt="kip_kuliah">
+                </a>
+                <a href="https://www.tanotofoundation.org/id/teladan2022/">
+                    <img class="pb-1" src="{{url(asset('assets/Tanoto.png'))}}" alt="tanoto">
+                </a>
+                <a href="https://www.cimbniaga.co.id/id/personal/index">
+                    <img src="{{url(asset('assets/niaga.jpg'))}}" alt="cimb_niaga"> 
+                </a>
             </div>
             <div>
-                <img class="pb-1" src="{{url(asset('assets/Sea.png'))}}" alt="sea">
-                <img class="pb-1" src="{{url(asset('assets/bni.jpg'))}}" alt="bni">
-                <img class="pb-1" src="{{url(asset('assets/mbkm.jpg'))}}" alt="kampusMerdeka">
+                <a href="https://idscholarships.sea.com/">
+                    <img class="pb-1" src="{{url(asset('assets/Sea.png'))}}" alt="sea">
+                </a>
+                <a href="https://www.pendaftaranonline.web.id/2015/04/pendaftaran-online-beasiswa-bni.html">
+                    <img class="pb-1" src="{{url(asset('assets/bni.jpg'))}}" alt="bni">
+                </a>
+                <a href="https://kampusmerdeka.kemdikbud.go.id/">
+                    <img class="pb-1" src="{{url(asset('assets/mbkm.jpg'))}}" alt="kampusMerdeka">
+                </a>
+                
             </div>
             <div >
-                <img class="pb-1" src="{{url(asset('assets/Rajawali.png'))}}" alt="rajawali">
-                <img class="pb-1" src="{{url(asset('assets/inalum.jpg'))}}" alt="inalum">
+                <a href="https://www.rajawali.com/rajawali-foundation-beri-beasiswa-ke-institute-politeknik-del/" >
+                    <img class="pb-1" src="{{url(asset('assets/Rajawali.png'))}}" alt="rajawali" >
+                </a>
+                <a href="https://inalum.id/id">
+                    <img class="pb-1" src="{{url(asset('assets/inalum.jpg'))}}" alt="inalum">
+                </a>
+                
             </div>
         </div>
 </div>  

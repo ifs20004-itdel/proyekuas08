@@ -47,8 +47,5 @@
     <li>
       <a href="/seleksi" class="block py-2 pl-3 pr-4 text-yellow-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-400 md:p-0 tracking-wider">Seleksi</a>
     </li>
-    <li>
-      <a href="/about" class="block py-2 pl-3 pr-4 text-yellow-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-400 md:p-0 tracking-wider">About</a>
-    </li>
   </ul>
 </div>

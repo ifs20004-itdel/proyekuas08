@@ -26,10 +26,22 @@ class BlogController extends Controller
             $result .= $tag->value." ";
         }
 
+        // Get the thumbnail image
+        // $file = $request->hasFile('thumbnail');
+        $file = $request->hasFile('thumbnail');
+        $file_name = "";
+        if($file){
+            $newFile = $request->file('thumbnail');
+            $file_name .= $newFile->store('thumbnails');
+            // $imgpath = request()->file('file')->store('uploads','public');
+        }
+
         Posts::insert([
             'id_article'=>rand(10000,100000),
             'title'=>$request->title,
             'tags'=>$result,
+            'caption'=>$request->caption,
+            'thumbnail'=>$file_name,
             'description'=>$request->description,
             'created_at'=> now()
         ]);
@@ -37,11 +49,12 @@ class BlogController extends Controller
         return redirect()->route('dashboard');
     }
     
-    public function upload(Request $request){
-    //    $fileName = $request->file('file')->getClientOriginalName();
-    //    $path = $request()->file('file')->storeAs('uploads',$fileName,'public');
-    //    return response()->json(['location'=>"/storage/$path"]);
+    public function show($id_article){
+        $post = Posts::where('id_article',$id_article)->first();
+        return view('blog.showArticle',compact('post'));
+    }
 
+    public function upload(Request $request){
         $imgpath = request()->file('file')->store('uploads','public');
         return response()->json(['location'=>"/storage/$imgpath"]);
     }

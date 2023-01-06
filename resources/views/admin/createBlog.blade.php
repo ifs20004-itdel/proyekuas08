@@ -1,7 +1,6 @@
 @extends('layouts.app')
-@section('title','Dashboard')
+@section('title','Tulis Blog')
 @section('background', 'bg-slate-700')
-
 @section('content')
 <!DOCTYPE html>
 <html>
@@ -20,26 +19,52 @@
 <body>
   <div class="w-3/4 mx-auto font-serif">
     <h1 class="pt-10 text-4xl font-bold "> Detail Blog </h1>
-    <form class="my-10" action="{{route('store-blog')}}" method="POST">
+  <form class="my-10" action="{{route('store-blog')}}" method="POST" enctype="multipart/form-data" >
     @csrf
-      <label class="text-xl p-1 tracking-wide" for="title">Judul</label>
-      <input class="block w-full text-gray-700 border border-gray-300 rounded py-3 px-4 mt-2 mb-10 leading-tight focus:outline-none hover:shadow-md" id="title" name="title" type="text">
-      <label class="text-xl p-1 tracking-wide" for="tags">Tags</label>
-      <input
-        type="text"
-        class="w-full px-4 py-2 mt-2 mb-10 text-sm border border-gray-300 rounded leading-tight focus:outline-none hover:shadow-md "
-        id="tags"
-        name="tags"
-        value="Artikel"
-        autofocus/>
-      <label class="text-xl p-1 tracking-wide" for="konten">Deskripsi</label>
-      <textarea id="description" name="description">
-      </textarea>
-      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white px-5 py-2 my-4 rounded-md">Submit</button>
-      <a href="/" class="bg-red-500 hover:bg-red-700 text-white px-5 py-3 mx-4 my-4 rounded-md">Cancel</a>
+      <div class="mb-10">
+        <label class="text-xl p-1 tracking-wide" for="title">Judul</label>
+        <input class="block w-full px-4 py-3 text-gray-700 border border-gray-300 rounded leading-tight focus:outline-none hover:shadow-md" id="title" name="title" type="text">
+        @error('title')
+            <div class="text-red-600  pl-2">{{ $message }}</div>
+        @enderror
+      </div>
+      <div>
+        <label class="text-xl p-1 tracking-wide" for="tags">Tags</label>
+        <input
+          type="text"
+          class="w-full px-4 py-2 mt-2 mb-10 text-sm border border-gray-300 rounded leading-tight focus:outline-none hover:shadow-md "
+          id="tags"
+          name="tags"
+          value="Artikel"
+          autofocus/>
+        @error('tags')
+          <div class="text-red-600  pl-2">{{ $message }}</div>
+        @enderror
+      </div>
+      <div class="mb-10">
+        <label for="caption" class="text-xl p-1 tracking-wide">Deskripsi Singkat</label>
+        <input class="block w-full px-4 py-3 text-gray-700 border border-gray-300 rounded leading-tight focus:outline-none hover:shadow-md" id="caption" name="caption" type="text" value="-">
+        <p class=" text-sm "> <span style="color: red">* Optional</span> (Tidak wajib untuk tag Pengumuman, merupakan caption berita yang ditampilkan di laman beranda. <span style="color: red"> Skip jika kosong </span>)</p>
+      </div>
+      <div class="mb-10">
+        <label for="thumbnail" class="text-xl p-1 tracking-wide">Thumbnail (Pratinjau)</label>
+        <input class="block w-full px-4 py-3 text-gray-700 border border-gray-300 rounded leading-tight focus:outline-none hover:shadow-md" type="file" id="thumbnail" name="thumbnail" >
+        <p class=" text-sm "> <span style="color: red">* Optional</span> (Tidak wajib untuk tag Pengumuman, merupakan gambar yang ditampilkan di beranda.)</p>
+        @error('caption')
+            <div class="text-red-600  pl-2">{{ $message }}</div>
+        @enderror
+      </div>
+      <div>
+        <label class="text-xl p-1 tracking-wide" for="konten">Konten</label>
+        <textarea id="description" name="description" >
+          Input text here . . .
+        </textarea>
+      </div>
+
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white px-5 py-2 my-4 rounded-md">Submit</button>
+        <a href="/" class="bg-red-500 hover:bg-red-700 text-white px-5 py-3 mx-4 my-4 rounded-md">Cancel</a>
   </form>
   </div>
-
     {{-- Script for input tags --}}
     <script src="https://unpkg.com/@yaireo/tagify"></script>
     <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
@@ -52,7 +77,6 @@
         hooks: {
           beforeRemoveTag: (tags) => {
             tags[0].node.classList.add('tagify__tag');
-
             return new Promise((resolve, reject) => {
               confirm(`Are you sure to delete ${tags[0].data.value} tag ?`)
                 ? resolve()
@@ -62,7 +86,6 @@
         },
       });
     </script>
-
     {{-- Script for TinyMCE --}}
   <script>
     tinymce.init({

@@ -24,19 +24,26 @@ class LoginController extends Controller
             'username' => 'required',
             'password' => 'required'
         ]);
-        // dd($request->username());
+        // if($request->username == 'admin' && $request->password == 'admin123'){
+        //     $id_user = 1;
+        //     $role = 'Admin';
+        //     $remember_token = 'admin123';
+        //     $dt = User::where('user_id', $id_user)->first();
+        //     Auth::login($dt, $remember_token);
+        //     $request->session()->put('username', 'admin');
+        //     $request->session()->regenerate();
+        //     return redirect()->route('dashboard');
+        // }
+        
         $user = Http::asForm()->post('https://cis.del.ac.id/api/jwt-api/do-auth?',[
             'username' => $request->username,
             'password' => $request->password
         ]);
 
         $json = json_decode($user->body(), true);
-        // $res = $json['result'];
         if($json['result'] == true){
 
             $token = $json['token'];
-
-            // $request->session()->put('user', $json['data']);
             $id_user = $json['user']['user_id'];
             $username = $json['user']['username'];
             $email = $json['user']['email'];

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->integer("id_article");
             $table->string('title');
             $table->string('tags');
+            $table->text('caption');
+            $table->text('thumbnail');
             $table->text('description');
             $table->timestamps();
         });

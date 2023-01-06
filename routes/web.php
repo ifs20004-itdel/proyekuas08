@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DataBeasiswaController;
@@ -17,12 +18,6 @@ use App\Http\Controllers\BlogController;
 |
 */
 
-
-// Route::get('/{userlog}', function () {
-//     return view('dashboard');
-// })->name('dashboardLoggedIn');
-
-
 // Login
 Route::middleware('guest')->group(function(){
     Route::post('/login/auth',[LoginController::class,'store'])->name('login');
@@ -33,8 +28,7 @@ Route::group(
     ['middleware'=>['auth','role']],
     function(){
         Route::get('/create-data-beasiswa/{tahun}',[
-            DataBeasiswaController::class,'create'])->name('create-data-beasiswa')->middleware('role');
-
+            DataBeasiswaController::class,'create'])->name('create-data-beasiswa');
         Route::post('/create-data-beasiswa/{tahun}',
             [DataBeasiswaController::class,'store'])->name('store-data-beasiswa');
 
@@ -57,15 +51,10 @@ Route::group(
 
 
 // Dashboard
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/',
+    [DashboardController::class,'index']
+)->name('dashboard');
 
-
-
-Route::get('/about',function(){
-    return view('about');
-});
 
 // Route::get('/daftarBeasiswa',function(){
 //     return view('daftarBeasiswa');
@@ -83,9 +72,11 @@ Route::get('/seleksi',function(){
     return view('seleksibeasiswa.seleksi');
 });
 
-
 // Data Beasiswa
 Route::get('dataBeasiswa/{tahun}',[DataBeasiswaController::class,'index'])->name('dataBeasiswa');
+
+// News
+Route::get('{id}/',[BlogController::class,'show'])->name('article');
 
 // Log out
 Route::post('logout', LogoutController::class)->name('logout');

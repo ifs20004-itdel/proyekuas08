@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('beasiswa_eksternal', function (Blueprint $table) {
+        Schema::create('beasiswa-eksternal', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->text('konten');
-            $table->string('gambar');
-            $table->string('link');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->integer("id_scholarship");
+            $table->string('title');
+            $table->string('tags');
+            $table->text('caption');
+            $table->text('thumbnail');
+            $table->text('registration_link');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('beasiswa_eksternal');
+        //
     }
 };

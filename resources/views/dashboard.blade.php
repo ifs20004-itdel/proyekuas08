@@ -22,5 +22,9 @@
         @include('blog.postPengumuman')
       </div>
     </div>
+    <div class="absolute z-10 pl-5 flex mx-20 p-5 rounded-md" style="margin-top: 1150px ">
+      <h1 class="px-10 my-4 text-3xl font-bold ">Program yang Tersedia</h1>
+      @include('daftarBeasiswa.beasiswaCard')
+    </div>
 </div>
 @endsection

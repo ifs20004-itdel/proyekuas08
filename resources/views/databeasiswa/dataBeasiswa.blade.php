@@ -2,7 +2,6 @@
 @section('title', 'Data Beasiswa')
 @section('background', 'bg-slate-700')
 @section('content')
-
     <html>
         <head>
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

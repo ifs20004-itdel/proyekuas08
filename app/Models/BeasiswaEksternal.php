@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\BeasiswaEksternal;
 
 class BeasiswaEksternal extends Model
 {
-    use HasFactory;
 
-    protected $table = 'beasiswa_eksternal';
+    protected $table = 'beasiswa-eksternal';
     protected $primarykey = 'id';
-
+    protected $fillable = [
+        'id_scholarship','title','tags', 'caption','thumbnail','registration_link','description', 'created_at', 'updated_at'
+    ];
 }

@@ -2,18 +2,14 @@
 @section('title','Beasiswa Eksternal')
 @section('background', 'bg-slate-700')
 @section('content')
-{{-- @include('layouts.navbar') --}}
     <h1 class="text-center font-bold text-5xl pt-10 pb-16">Beasiswa Eksternal</h1>
-    {{-- <div class="container w-3/4 m-auto px-10"> --}}
         @php
-            // Auth::user()->id;
             $id = 1;
             // split the description and store it in an array
             foreach($sponsorship as $item){
                 $list = explode(";", $item->description);
                 $item->description = $list;
             }
-            
         @endphp
         @foreach($sponsorship as $item)
             <div class="container w-3/4 m-auto px-10">
@@ -42,23 +38,31 @@
                 Tidak ada pendaftaran beasiswa yang tersedia untuk saat ini!
             </h1>
     @else
-        @foreach($eksternalBeasiswa as $key => $value)
-        <div class="w-3/4 m-auto font-bold text-2xl pb-10">
-            <div class="max-w-sm rounded overflow-hidden shadow-lg pt-5">
-                <img class="w-full" src="/img/card-top.jpg" alt="Sunset in the mountains">
-                <div class="px-6 py-4">
-                  <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
-                  <p class="text-gray-700 text-base">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
-                  </p>
+        <div class="flex px-10">
+            @foreach($eksternalBeasiswa as $key => $value)
+            <div class="w-1/4 m-auto pb-10">
+                <div class="max-w-sm rounded overflow-hidden shadow-lg pt-5">
+                    <a href="{{$value->registration_link}}">
+                        <img class="w-full" src="{{$value->thumbnail}}" alt="Sunset in the mountains">
+                    </a>
+                    <div class="px-6 py-4">
+                    <div class="font-bold text-xl mb-2">
+                        <a href="{{$value->registration_link}}">
+                            {{$value->title}}
+                        </a>
+                    </div>
+                    <p class="text-gray-700 text-base">
+                        {{limit_text($value->caption, 20)}}
+                    </p>
+                    </div>
+                    <form action="{{route('daftar-beasiswa')}}" method="GET" class="w-2/4 px-5 pt-4 pb-5">
+                        <button class="inline-flex items-center text-white text-center font-semibold bg-blue-500 hover:bg-blue-700 px-4 py-1 rounded-md" type="submit">Daftar
+                            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
+                        </button>
+                    </form>
                 </div>
-                <div class="px-6 pt-4 pb-2">
-                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
-                </div>
-              </div>
+            </div>
+            @endforeach
         </div>
-        @endforeach
     @endif
 @endsection

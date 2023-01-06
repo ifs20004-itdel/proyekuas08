@@ -7,6 +7,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\DataBeasiswaController;
 use App\Http\Controllers\EksternalBeasiswaController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\DaftarBeasiswaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,8 +21,18 @@ use App\Http\Controllers\BlogController;
 
 // Login
 Route::middleware('guest')->group(function(){
+
+    // Login
     Route::post('/login/auth',[LoginController::class,'store'])->name('login');
     Route::get('/login/auth',[LoginController::class,'create']);
+
+});
+
+Route::middleware('auth')->group(function(){
+        // Daftar Beasiswa
+        Route::get('/daftar-beasiswa',[DaftarBeasiswaController::class,'create'])->name('daftar-beasiswa');
+
+        Route::post('/daftar-beasiswa',[DaftarBeasiswaController::class,'store'])->name('store-daftar-beasiswa');
 });
 
 Route::group(
@@ -36,9 +47,8 @@ Route::group(
             [DataBeasiswaController::class,'destroy'])->name('hapus-data-beasiswa');
 
         // Blog admin
-        Route::get('/create-blog',
+        Route::get('/create-blog/{types}',
             [BlogController::class,'create'])->name('create-blog');
-
         Route::post('/create-blog',
             [BlogController::class,'store'])->name('store-blog');
 
@@ -68,9 +78,9 @@ Route::get('/beasiswaEksternal',
     [EksternalBeasiswaController::class,'index'])->name('beasiswaEksternal');
 
 // Seleksi Beasiswa
-Route::get('/seleksi',function(){
-    return view('seleksibeasiswa.seleksi');
-});
+Route::get('/seleksi',
+    [ DaftarBeasiswaController::class,'show']
+);
 
 // Data Beasiswa
 Route::get('dataBeasiswa/{tahun}',[DataBeasiswaController::class,'index'])->name('dataBeasiswa');

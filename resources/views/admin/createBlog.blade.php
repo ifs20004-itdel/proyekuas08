@@ -30,7 +30,30 @@
       </div>
       <div>
         <label class="text-xl p-1 tracking-wide" for="tags">Tags</label>
-        <input
+        @if($type == "Beasiswa")
+          <input
+          type="text"
+          class="w-full px-4 py-2 mt-2 mb-10 text-sm border border-gray-300 rounded leading-tight focus:outline-none hover:shadow-md "
+          id="tags"
+          name="tags"
+          value="Beasiswa"
+          autofocus/>
+          @error('tags')
+            <div class="text-red-600  pl-2">{{ $message }}</div>
+          @enderror
+        @else
+          <input
+          type="text"
+          class="w-full px-4 py-2 mt-2 mb-10 text-sm border border-gray-300 rounded leading-tight focus:outline-none hover:shadow-md "
+          id="tags"
+          name="tags"
+          value="Artikel"
+          autofocus/>
+          @error('tags')
+            <div class="text-red-600  pl-2">{{ $message }}</div>
+          @enderror
+        @endif
+        {{-- <input
           type="text"
           class="w-full px-4 py-2 mt-2 mb-10 text-sm border border-gray-300 rounded leading-tight focus:outline-none hover:shadow-md "
           id="tags"
@@ -39,7 +62,7 @@
           autofocus/>
         @error('tags')
           <div class="text-red-600  pl-2">{{ $message }}</div>
-        @enderror
+        @enderror --}}
       </div>
       <div class="mb-10">
         <label for="caption" class="text-xl p-1 tracking-wide">Deskripsi Singkat</label>
@@ -54,13 +77,18 @@
             <div class="text-red-600  pl-2">{{ $message }}</div>
         @enderror
       </div>
+      @if($type=="Beasiswa")
+        <div class="mb-10">
+          <label class="text-xl p-1 tracking-wide" for="title">Link Pendaftaran</label>
+          <input class="block w-full px-4 py-3 text-gray-700 border border-gray-300 rounded leading-tight focus:outline-none hover:shadow-md" id="regist" name="regist" type="text">
+        </div>
+      @endif
       <div>
         <label class="text-xl p-1 tracking-wide" for="konten">Konten</label>
         <textarea id="description" name="description" >
           Input text here . . .
         </textarea>
       </div>
-
         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white px-5 py-2 my-4 rounded-md">Submit</button>
         <a href="/" class="bg-red-500 hover:bg-red-700 text-white px-5 py-3 mx-4 my-4 rounded-md">Cancel</a>
   </form>

@@ -42,7 +42,6 @@ class LoginController extends Controller
 
         $json = json_decode($user->body(), true);
         if($json['result'] == true){
-
             $token = $json['token'];
             $id_user = $json['user']['user_id'];
             $username = $json['user']['username'];

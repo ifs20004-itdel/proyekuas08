@@ -8,6 +8,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Kyslik\ColumnSortable\Sortable;
 use App\Models\DataBeasiswa;
 use App\Models\Prodi;
+use App\Models\Angkatan;
 use Alert;
 
 class DataBeasiswaController extends Controller
@@ -26,8 +27,9 @@ class DataBeasiswaController extends Controller
 
     public function create($tahun){   
         $programStudi = Prodi::all();
+        $angkatan = Angkatan::all();
         return view('databeasiswa.createData',
-         compact('programStudi'),
+         compact('programStudi', 'angkatan'),
          [
              'tahun' => $tahun
          ]

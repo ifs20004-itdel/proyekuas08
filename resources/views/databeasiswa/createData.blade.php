@@ -41,7 +41,7 @@
             </div>
             <div class="mb-6">
                 <label for="tahunTerima" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Tahun Penerimaan</label>
-                <input autocomplete="off" type="text" id="tahunTerima" name="tahunTerima" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder= "ex: 2020-2022 or 2022" >
+                <input type="text" id="tahunTerima" name="tahunTerima" value={{$tahun}}  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" disabled >
                 @error('tahunTerima')
                     <div class="text-red-600  pl-2">{{ $message }}</div>
                 @enderror
@@ -50,7 +50,13 @@
         <div class="grid grid-cols-2 gap-10">
             <div class="mb-6">
                 <label for="angkatan" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Angkatan</label>
-                <input autocomplete="off" type="text" id="angkatan" name="angkatan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="ex: 2020" >
+                {{-- <input autocomplete="off" type="text" id="angkatan" name="angkatan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="ex: 2020" > --}}
+                <select id="angkatan" name="angkatan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected disabled="disabled" >Pilih Angkatan</option>
+                    @foreach($angkatan as $key )
+                        <option value='{{$key->id}}'>{{$key->angkatan}}</option>
+                    @endforeach
+                </select>
                 @error('angkatan')
                     <div class="text-red-600  pl-2">{{ $message }}</div>
                 @enderror

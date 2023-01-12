@@ -5,7 +5,7 @@
 @section('content')
 
 @csrf
-<div style="height:2000px">
+<div style="height:1600px">
     <img src="{{asset('assets/DashboardBg.jpg')}}" alt="theme" class=" object-cover absolute z-0" style=" top:0; width:100%; height:80vh" >
     <div class="absolute z-10 top-40 pl-12">
       <h1 class="text-6xl text-white drop-shadow-lg pt-5 -z-0"> <b>Create</b> Best Future, <br> </h1>

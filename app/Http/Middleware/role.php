@@ -19,7 +19,7 @@ class role
     {
         $user = Auth::user()->role;
         // $user = \App\Models\User::where('role', Auth::user()->role)->first();
-        if($user == 'Mahasiswa')
+        if($user == 'Admin')
         {
             return $next($request);
         }

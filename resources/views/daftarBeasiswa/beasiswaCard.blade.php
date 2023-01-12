@@ -9,8 +9,8 @@ $eksternalBeasiswa = \App\Models\BeasiswaEksternal::all();
 @else
 <div class="flex px-10">
 @foreach($eksternalBeasiswa as $key => $value)
-<div class="w-1/4 m-auto pb-10">
-    <div class="max-w-sm rounded overflow-hidden shadow-lg pt-5">
+<div class="w-1/4 m-auto pb-10 h-48">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg pt-5 h-full">
         <a href="{{$value->registration_link}}">
             <img class="w-full" src="{{$value->thumbnail}}" alt="Sunset in the mountains">
         </a>

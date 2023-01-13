@@ -9,6 +9,7 @@ use Kyslik\ColumnSortable\Sortable;
 use App\Models\DataBeasiswa;
 use App\Models\Prodi;
 use App\Models\Angkatan;
+use App\Models\BeasiswaEksternal;
 use Alert;
 
 class DataBeasiswaController extends Controller
@@ -28,8 +29,9 @@ class DataBeasiswaController extends Controller
     public function create($tahun){   
         $programStudi = Prodi::all();
         $angkatan = Angkatan::all();
+        $beasiswa = BeasiswaEksternal::all();
         return view('databeasiswa.createData',
-         compact('programStudi', 'angkatan'),
+         compact('programStudi', 'angkatan', 'beasiswa'),
          [
              'tahun' => $tahun
          ]

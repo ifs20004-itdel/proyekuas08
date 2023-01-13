@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
+use App\Models\UserDetail;
 use App\Provider\RouteServiceProvider;
 
 class LoginController extends Controller
@@ -43,12 +44,16 @@ class LoginController extends Controller
 
             $json = json_decode($user->body(), true);
             if($json['result'] == true){
+
                 $token = $json['token'];
                 $id_user = $json['user']['user_id'];
                 $username = $json['user']['username'];
                 $email = $json['user']['email'];
                 $role = $json['user']['role'];
                 $remember_token = $json['token'];
+
+                $userDetail = Http::withToken($token)->asForm()->post('https://cis-dev.del.ac.id/api/library-api/mahasiswa?username='.$username)->body();
+                $jsonDetail = json_decode($userDetail, true);
 
                 // Cek apakah data user terdapat di database
                 $exist = User::where('user_id', $id_user)->exists();
@@ -59,8 +64,24 @@ class LoginController extends Controller
                 $users->role = $role;
                 $users->remember_token = $remember_token;
 
+
+
                 if(!$exist){
+                    // Save user to User table
                     $users->save();
+
+                    // Save user detail to User_detail table
+                    $userDetail = new UserDetail;
+                    $userDetail->id_user = $id_user;
+                    $userDetail->username = $username;
+                    $userDetail->nim = $jsonDetail['data']['mahasiswa'][0]['nim'];
+                    $userDetail->nama = $jsonDetail['data']['mahasiswa'][0]['nama'];
+                    $userDetail->email = $jsonDetail['data']['mahasiswa'][0]['email'];
+                    $userDetail->prodi = $jsonDetail['data']['mahasiswa'][0]['prodi_name'];
+                    $userDetail->angkatan = $jsonDetail['data']['mahasiswa'][0]['angkatan'];
+                    $userDetail->status = $jsonDetail['data']['mahasiswa'][0]['status'];
+                    $userDetail->save();
+
                 }
 
                 $dt = User::where('user_id', $id_user)->first();

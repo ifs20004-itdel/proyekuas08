@@ -34,7 +34,12 @@
         <div class="grid grid-cols-2 gap-10">
             <div class="mb-6">
                 <label for="beasiswa" class="block mb-2 text-md font-medium text-gray-900 dark:text-white">Beasiswa</label>
-                <input autocomplete="off" type="text" id="beasiswa" name="beasiswa" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder= "ex: SEA Scholarship" >
+                <select id="beasiswa" name="beasiswa" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected disabled="disabled" >Pilih Beasiswa</option>
+                    @foreach($beasiswa as $key )
+                        <option value='{{$key->title}}'>{{$key->title}}</option>
+                    @endforeach
+                </select>
                 @error('beasiswa')
                     <div class="text-red-600  pl-2">{{ $message }}</div>
                 @enderror

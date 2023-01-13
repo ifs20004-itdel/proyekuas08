@@ -18,7 +18,7 @@
 </head>
 <body>
   <div class="w-3/4 mx-auto font-serif">
-    <h1 class="pt-10 text-4xl font-bold "> Detail Blog </h1>
+    <h1 class="pt-10 text-4xl font-bold "> Detail Dokumen </h1>
   <form class="my-10" action="{{route('store-blog')}}" method="POST" enctype="multipart/form-data" >
     @csrf
       <div class="mb-10">

@@ -44,7 +44,6 @@
                             <th class="px-10 border border-slate-400">Aksi</th>
                         @endif
                     @endif
-                    {{-- <th class="px-10 border border-slate-400">Aksi</th> --}}
                 </tr>
                 @php
                     $id = 1;

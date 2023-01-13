@@ -1,18 +1,12 @@
 <div class="flex items-center md:order-2 pr-3">
-  {{-- <button type="button" class="flex mr-3 text-sm rounded-full md:mr-0 " id="user-menu-button" aria-expanded="false" data-dropdown-toggle="notification" data-dropdown-placement="bottom">
-    <x-monoicon-notification class="pr-4" color="white" width="35" />
-  </button> --}}
   <button type="button" class="flex mr-3 text-sm rounded-full md:mr-0 " id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
     <x-codicon-account color="white" width="30" />    
   </button>
-  {{-- <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow" id="notification">
-    <div class="px-4 py-3">
-      <span class="block text-sm text-gray-900 ">Notification</span>
-    </div>
-  </div> --}}
+
+
   <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow" id="user-dropdown">
     <div class="px-4 py-3">
-      <span class="block text-sm text-gray-900 ">{{Auth::user()->username}}</span>
+      <span class="block text-sm text-gray-900 ">{{Auth::user()->nama}}</span>
       <span class="block text-sm font-medium text-gray-500 truncate ">{{Auth::user()->email}}</span>
     </div>
     <ul class="py-1" aria-labelledby="user-menu-button">
@@ -90,9 +84,6 @@
         </ul>
       </div>
     </li>
-      {{-- <li>
-        <a href="/create-blog" class="block py-2 pl-3 pr-4 text-yellow-50 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-400 md:p-0 tracking-wider">Tulis</a>
-      </li> --}}
     @endif
   </ul>
 </div>

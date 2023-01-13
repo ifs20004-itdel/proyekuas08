@@ -66,9 +66,6 @@ Route::get('/',
 )->name('dashboard');
 
 
-// Route::get('/daftarBeasiswa',function(){
-//     return view('daftarBeasiswa');
-// });
 
 // Jenis Beasiswa
 Route::get('/beasiswaInternal',function(){
@@ -80,7 +77,7 @@ Route::get('/beasiswaEksternal',
 // Seleksi Beasiswa
 Route::get('/seleksi',
     [ DaftarBeasiswaController::class,'show']
-);
+)->name('seleksi');
 
 // Data Beasiswa
 Route::get('dataBeasiswa/{tahun}',[DataBeasiswaController::class,'index'])->name('dataBeasiswa');

@@ -4,27 +4,51 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Registrar;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use App\Models\User;
+use App\Models\UserDetail;
+use App\Models\BeasiswaEksternal;
 use Alert;
 
 class DaftarBeasiswaController extends Controller
 {
+
+    public function getIP($nim){
+        $token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImp0aSI6IlVOSVFVRS1KV1QtSURFTlRJRklFUiJ9.eyJpc3MiOiJodHRwczpcL1wvYXBpLmV4YW1wbGUuY29tIiwiYXVkIjoiaHR0cHM6XC9cL2Zyb250ZW5kLmV4YW1wbGUuY29tIiwianRpIjoiVU5JUVVFLUpXVC1JREVOVElGSUVSIiwiaWF0IjoxNjczNTc5MjQzLCJleHAiOjE2NzM1ODIyNDMsInVpZCI6MTk4Nn0.XoIGwImFvIa2siQ8V6m5DMGVcmyw_GYZGwkrTYCvFxM";
+        $userIP = Http::withToken($token)->asForm()->post('https://cis-dev.del.ac.id/api/library-api/get-penilaian?nim='.$nim)->body();
+        $jsonIP = json_decode($userIP, true);
+        $userIP = $jsonIP['IP'];
+        return $userIP;
+    }
+
     public function create(){
-        return view('daftarBeasiswa.formDaftar',        
+        // Get the user data
+        $beasiswa = BeasiswaEksternal::all();
+        $user  = User::where('user_id', Auth::user()->user_id)->first();
+        $userDetail = UserDetail::where('id_user', Auth::user()->user_id)->first();
+        $userIP = $this->getIP($userDetail->nim);
+
+        return view('daftarBeasiswa.formDaftar',
+        [
+            'user' => $user,
+            'userDetail' => $userDetail,
+            'beasiswa' => $beasiswa,
+            'userIP' => $userIP,
+        ]
+
     );
     }
 
     public function store(Request $request){
         $request->validate([
-            'email' => 'required',
-            'nama' => 'required',
-            'nim' => 'required',
-            'prodi' => 'required',
             'tipe' => 'required',
             'emailPribadi'=> 'required',
             'hp'=> 'required',
             'live'=> 'required',
         ]);
-        // return $request->all();
 
         // Get the file from the request
         $file1 = $request->hasFile('ktm');
@@ -78,12 +102,15 @@ class DaftarBeasiswaController extends Controller
                 'ktp'=>$file2,
                 'transkrip'=>$file3,
                 'suratPernyataan'=>$file4,
-                'lainnya'=>$file5,
+                'lainnya'=>"null",
                 'created_at'=> now()
             ]);
-    
+            // Get all data registrars
+            $registrars = Registrar::all();
+
         Alert::success('Sukses', 'Anda Berhasil Mendaftar.');
-        // return view('daftarBeasiswa.dataPendaftar');
+        return redirect()->route('seleksi');
+            
     }
 
     public function show(){
